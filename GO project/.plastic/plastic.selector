@@ -1,0 +1,4 @@
+repository "GoProjectGame@JackyGoProject@cloud"
+  path "/"
+    br "/main"
+    co "/main"

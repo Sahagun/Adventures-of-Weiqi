@@ -1,0 +1,80 @@
+{
+    "boardSize": 7,
+    "boardFlat": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0,
+        2,
+        1,
+        0,
+        2,
+        0
+    ],
+    "moves": [
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(6,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": [
+                {
+                    "playerMove": "(7,2)",
+                    "aiMove": "(6,4)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(6,3)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ]
+        }
+    ]
+}

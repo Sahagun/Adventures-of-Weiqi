@@ -1,0 +1,12 @@
+{
+    "presetMoves": [
+        {
+            "playerMove": "4,2",
+            "aiMove": "6,4"
+        },
+        {
+            "playerMove": "5,3",
+            "aiMove": "0"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce4f9d0637fbc44ebf46c9b980608a2, type: 3}
+  m_Name: DialogueConfig
+  m_EditorClassIdentifier: 
+  characters:
+  - icon: {fileID: 21300000, guid: 608c550cd9fae3643bc35d0bab2b8cbe, type: 3}
+    title: Char1
+  - icon: {fileID: 21300000, guid: d9fd4bbdc9effc44b96d7bb1b1ea159f, type: 3}
+    title: Char2
+  entries:
+  - character: Char1
+    dialogue: Hello this is the first dialogue
+  - character: Char2
+    dialogue: Bye for now!

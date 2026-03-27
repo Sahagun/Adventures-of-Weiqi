@@ -1,0 +1,108 @@
+{
+    "boardSize": 7,
+    "boardFlat": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0
+    ],
+    "moves": [
+        {
+            "playerMove": "(4,7)",
+            "aiMove": "(4,6)",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(3,6)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": []
+        },
+        {
+            "playerMove": "(4,6)",
+            "aiMove": "(4,7)",
+            "isKoMove": false,
+            "correctMoves": [],
+            "wrongMoves": [
+                {
+                    "playerMove": "(5,7)",
+                    "aiMove": "(3,7)",
+                    "isKoMove": false
+                }
+            ]
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [],
+            "wrongMoves": [
+                {
+                    "playerMove": "(3,6)",
+                    "aiMove": "(5,7)",
+                    "isKoMove": false
+                }
+            ]
+        },
+        {
+            "playerMove": "(5,7)",
+            "aiMove": "(4,7)",
+            "isKoMove": false,
+            "correctMoves": [],
+            "wrongMoves": [
+                {
+                    "playerMove": "(4,6)",
+                    "aiMove": "(3,7)",
+                    "isKoMove": false
+                }
+            ]
+        }
+    ]
+}

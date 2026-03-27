@@ -1,0 +1,16 @@
+{
+    "moves": [
+        {
+            "playerMove": "(1,6)",
+            "aiMove": "(3,4)"
+        },
+        {
+            "playerMove": "(3,3)",
+            "aiMove": "(1,4)"
+        },
+        {
+            "playerMove": "(1,3)",
+            "aiMove": "(0,0)"
+        }
+    ]
+}
