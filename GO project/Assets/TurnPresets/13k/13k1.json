@@ -53,10 +53,15 @@
     ],
     "moves": [
         {
-            "playerMove": "(6,7)",
-            "aiMove": "(7,4)",
+            "playerMove": "",
+            "aiMove": "",
             "isKoMove": false,
             "correctMoves": [
+                {
+                    "playerMove": "(6,7)",
+                    "aiMove": "(7,4)",
+                    "isKoMove": false
+                },
                 {
                     "playerMove": "(6,3)",
                     "aiMove": "(0,0)",
@@ -64,6 +69,11 @@
                 }
             ],
             "wrongMoves": [
+                {
+                    "playerMove": "(6,7)",
+                    "aiMove": "(7,4)",
+                    "isKoMove": false
+                },
                 {
                     "playerMove": "(7,5)",
                     "aiMove": "(6,3)",

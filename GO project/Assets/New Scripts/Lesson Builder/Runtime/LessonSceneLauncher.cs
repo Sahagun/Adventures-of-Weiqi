@@ -96,4 +96,10 @@ public class LessonSceneLauncher : MonoBehaviour
 
         SceneManager.LoadScene(lessonSceneToLoad);
     }
+
+    public void SetLessonData(GoLessonData newLessonData)
+    {
+        lessonData = newLessonData;
+        RefreshButtonLabel();
+    }
 }

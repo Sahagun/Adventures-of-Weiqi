@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef4a382a350f98438c21cfd3c789fdf, type: 3}
+  m_Name: Liberties
+  m_EditorClassIdentifier: 
+  lessonTitle: Liberties
+  lessonId: liberties
+  slides:
+  - slideName: Slide 1
+    slideType: 0
+    bodyText: Of course, stones placed on the board aren't immortal. They all have
+      "liberties". If a stone or a group of stones runs out of liberties, they are
+      captured, or taken off the board.
+    boardJsonFile: {fileID: 4900000, guid: cbf5d3bbfcdfe9d41bd8da8451bde56e, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 2
+    slideType: 0
+    bodyText: Liberties are empty intersections orthogonally (that is, intersections
+      to the left, right, up, or down of the stone, not diagonal) next to stones.
+      For example, this stone has 4 liberties.
+    boardJsonFile: {fileID: 4900000, guid: 979bfac1bf749ec49ac8bc33efe20e20, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 3
+    slideType: 0
+    bodyText: When there are stones orthogonally next to a stone of the same color,
+      they are considered one group of stones and share liberties. The two black
+      stones on the right count as a group and has 6 liberties (2 on the left, 2
+      on the right, 1 above, 1 below).
+    boardJsonFile: {fileID: 4900000, guid: 037900f09e92adf41993130ad7782f96, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 3
+    slideType: 0
+    bodyText: ' However, the two white stones on the left are not a group due to
+      not being orthogonally connected.'
+    boardJsonFile: {fileID: 4900000, guid: 037900f09e92adf41993130ad7782f96, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 4
+    slideType: 2
+    bodyText: Comprehension check. Are these white stones one group?
+    boardJsonFile: {fileID: 4900000, guid: 176631b323471aa48a0c9bd7d19918b3, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 5
+    slideType: 3
+    bodyText: Correct! Now, how many liberties does it have?
+    boardJsonFile: {fileID: 4900000, guid: 176631b323471aa48a0c9bd7d19918b3, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 10
+  - slideName: Slide 6
+    slideType: 2
+    bodyText: Nice! That was a tough one. Are these black stones one group?
+    boardJsonFile: {fileID: 4900000, guid: ca63c22c5b1b0304688c8d3f61ad0b52, type: 3}
+    correctYesAnswer: 0
+    correctNumberAnswer: 0
+  - slideName: Slide 7
+    slideType: 0
+    bodyText: Precisely. Notice how they are not connected orthogonally. Remember
+      diagonals doesn't count.
+    boardJsonFile: {fileID: 4900000, guid: ca63c22c5b1b0304688c8d3f61ad0b52, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 8
+    slideType: 0
+    bodyText: There are no liberties outside the edges. There is also no liberty
+      on an intersection that is taken by an opponent's stone.
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 9
+    slideType: 0
+    bodyText: For example, examine this group of black stones. It has 11 liberties.
+    boardJsonFile: {fileID: 4900000, guid: 99b7bdbd566e3b846acb33598c61ccf1, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 10
+    slideType: 0
+    bodyText: Here is the same group but next to the edge. Due to there being no
+      liberties outside the edge, it now only has 5.
+    boardJsonFile: {fileID: 4900000, guid: c74c29b7281319943aa5799397a2c37f, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 11
+    slideType: 0
+    bodyText: White went ahead and took some more of it's liberties. Now it only
+      has 2. How unfortunate.
+    boardJsonFile: {fileID: 4900000, guid: d72510c54735e654994028727adfd4c1, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 12
+    slideType: 3
+    bodyText: Now it's your turn. How many liberties does this group of black stones
+      have?
+    boardJsonFile: {fileID: 4900000, guid: f5d4f1a1f5da4fc489803b895e73807d, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 6
+  - slideName: Slide 13
+    slideType: 3
+    bodyText: How many liberties does this group of white stones have? Careful, this
+      one might be a bit tricky.
+    boardJsonFile: {fileID: 4900000, guid: 3dc4021d931e5424b98813386b746cdf, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 5
+  - slideName: Slide 14
+    slideType: 0
+    bodyText: Nicely done. Now that you know how liberties work, try capturing white's
+      stones as black by depleting its liberties.
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 15
+    slideType: 1
+    bodyText: Capture this white stone!
+    boardJsonFile: {fileID: 4900000, guid: 2b3353954f1fa544396e5bba12338451, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 16
+    slideType: 1
+    bodyText: This group next!
+    boardJsonFile: {fileID: 4900000, guid: dacb7d09b68d8b74db9ee1a6b00a89d6, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 17
+    slideType: 1
+    bodyText: Final test. White may try to escape this one!
+    boardJsonFile: {fileID: 4900000, guid: dc545a2e60329bb4a845c58daf2afd8f, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 18
+    slideType: 0
+    bodyText: Congrats! You have mastered how liberties work and basic capturing.
+      See you in the next one!
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0

@@ -51,7 +51,7 @@ public class PuzzlePersist : Singleton<PuzzlePersist>
         requiredSolveRateToUnlockNext = Mathf.Clamp01(unlockThreshold);
         nextPoolIdToUnlock = nextPoolId;
 
-        savedPuzzlePools = puzzlePool != null ? new List<TextAsset>(puzzlePool) : new List<TextAsset>();
+        savedPuzzlePools = GetRandomPuzzles(puzzlePool, 10);
         savedPuzzleData = savedPuzzlePools.Count > 0 ? savedPuzzlePools[0] : null;
 
         activePoolOrderInitialized = false;
@@ -59,6 +59,26 @@ public class PuzzlePersist : Singleton<PuzzlePersist>
         activePoolSolvedCount = 0;
         activePoolFailedCount = 0;
         ResetFirstResultStates();
+    }
+
+    private List<TextAsset> GetRandomPuzzles(List<TextAsset> sourcePool, int count)
+    {
+        if (sourcePool == null || sourcePool.Count == 0)
+            return new List<TextAsset>();
+
+        List<TextAsset> tempPool = new List<TextAsset>(sourcePool);
+        List<TextAsset> result = new List<TextAsset>();
+
+        int takeCount = Mathf.Min(count, tempPool.Count);
+
+        for (int i = 0; i < takeCount; i++)
+        {
+            int randomIndex = Random.Range(0, tempPool.Count);
+            result.Add(tempPool[randomIndex]);
+            tempPool.RemoveAt(randomIndex);
+        }
+
+        return result;
     }
 
     public void BeginLessonSession(GoLessonData lessonData)

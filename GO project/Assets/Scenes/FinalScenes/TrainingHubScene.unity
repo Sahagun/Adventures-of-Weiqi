@@ -1726,6 +1726,13 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 940dcf8e3a8e8544fa6d61dda060f53d, type: 3}
     - {fileID: 4900000, guid: bb6ac5883cddff343943868650e2f5d4, type: 3}
     - {fileID: 4900000, guid: 692ad4e44fe2cb94abeefea1a38786b1, type: 3}
+    - {fileID: 4900000, guid: 16472888b5d1f66429fefae46a72057a, type: 3}
+    - {fileID: 4900000, guid: 90f378459dfc0d54f8120fdd357c120d, type: 3}
+    - {fileID: 4900000, guid: 930f333b1dfd51d49bd0df0a969f381f, type: 3}
+    - {fileID: 4900000, guid: e1da3a89d597c5d4093989fdb52614ab, type: 3}
+    - {fileID: 4900000, guid: 48c425b9cab127d4599f1ddd91dd42d8, type: 3}
+    - {fileID: 4900000, guid: 44a269112af62554fbd2a7fbeef8a4a7, type: 3}
+    - {fileID: 4900000, guid: ba111c5d06c9d0e48b1d226865aaacc6, type: 3}
   - poolId: 14
     lockByDefault: 1
     requiredSolveRateToUnlockNext: 0.8
@@ -1742,6 +1749,22 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 2db8a3c6e8fcc0b40a31a75d8892aa5c, type: 3}
     - {fileID: 4900000, guid: c130b9b432ac3e9498362688064e8f61, type: 3}
     - {fileID: 4900000, guid: ccf7c07e97afd8c468cc8e76bc0cf4c1, type: 3}
+  - poolId: 13
+    lockByDefault: 1
+    requiredSolveRateToUnlockNext: 0.8
+    poolName: 13k
+    puzzleDatas:
+    - {fileID: 4900000, guid: 99fa35e7c501ef040a5994df21b6efe5, type: 3}
+    - {fileID: 4900000, guid: 5b393cf8c28ec95498655524046abec5, type: 3}
+    - {fileID: 4900000, guid: b174c1f483cb5174ea07c13ba7227526, type: 3}
+    - {fileID: 4900000, guid: 9f01013d06cc91b4b957532b76080096, type: 3}
+    - {fileID: 4900000, guid: b334a63484263aa4f9f2f8dbe1485d89, type: 3}
+    - {fileID: 4900000, guid: 2af153462d1e6b441b6dc6ad6cd8ad35, type: 3}
+    - {fileID: 4900000, guid: 14c3d133dd0de374d933f05b88cf71d8, type: 3}
+    - {fileID: 4900000, guid: 3ce09bab9a78ed942837dfd897c06691, type: 3}
+    - {fileID: 4900000, guid: e90729b63ea139c48a5167d3c39690a0, type: 3}
+    - {fileID: 4900000, guid: 524c3aab8baf36e4ebf18c0a5a0b4939, type: 3}
+    - {fileID: 4900000, guid: cd99e521cd5688e459bedb19fa84602e, type: 3}
   - poolId: 12
     lockByDefault: 1
     requiredSolveRateToUnlockNext: 1
@@ -1750,6 +1773,34 @@ MonoBehaviour:
     - {fileID: 4900000, guid: df3872c9c80a8c74baaeaf1fbef52ad8, type: 3}
     - {fileID: 4900000, guid: 294cc362f88619848b8e815131b0a034, type: 3}
     - {fileID: 4900000, guid: e39f1e1e5f790f6458791aa602bdee3a, type: 3}
+    - {fileID: 4900000, guid: 4907dbbf5818e4442b42441d6daeeb1c, type: 3}
+    - {fileID: 4900000, guid: 9df31108f47e5264fbae8b0bd50da739, type: 3}
+    - {fileID: 4900000, guid: 9b146f79889ff11479daf2ba51c38449, type: 3}
+    - {fileID: 4900000, guid: 5eef14490679d2948adcc7db0fdee24e, type: 3}
+    - {fileID: 4900000, guid: 2f5404b1f0c117b49bbab1d833e7ea59, type: 3}
+    - {fileID: 4900000, guid: 58b56b34d611cec4aba8f75e15189211, type: 3}
+    - {fileID: 4900000, guid: 225bc8ee826d57544b477fbd55080751, type: 3}
+    - {fileID: 4900000, guid: 97125789955518440ada74204077c330, type: 3}
+    - {fileID: 4900000, guid: cd69204d82561bf4d9753f24f106fd40, type: 3}
+    - {fileID: 4900000, guid: fedcdf6c99d28fe4aa5604386e9c8c43, type: 3}
+    - {fileID: 4900000, guid: 779fdd3d02b32de48a0a90875a85ad7c, type: 3}
+    - {fileID: 4900000, guid: 4f2af5f885834de4bbbe930101dcc303, type: 3}
+  - poolId: 11
+    lockByDefault: 1
+    requiredSolveRateToUnlockNext: 0.8
+    poolName: 11k
+    puzzleDatas:
+    - {fileID: 4900000, guid: 4774daceea4970f48b0290b2b92dee40, type: 3}
+    - {fileID: 4900000, guid: a05e3f617013f384696844ae02bda68f, type: 3}
+    - {fileID: 4900000, guid: e0b4d2af7b791eb478e7012fbe6d94fa, type: 3}
+    - {fileID: 4900000, guid: a56de4ffafc3ef643b1393c81cf786c8, type: 3}
+    - {fileID: 4900000, guid: fa21b64efef79d4419340a25195a6243, type: 3}
+    - {fileID: 4900000, guid: 60c34735f855786439ffea12c099eed2, type: 3}
+    - {fileID: 4900000, guid: 34dda7cda4ae18f4e9798524246cb7d3, type: 3}
+    - {fileID: 4900000, guid: de3355cdff82d404b83692bca28e90f4, type: 3}
+    - {fileID: 4900000, guid: 20bd59e803a4bb9439a987a6ac4c8f7f, type: 3}
+    - {fileID: 4900000, guid: b28dfc3ef9abce144b3495c18edd74d5, type: 3}
+    - {fileID: 4900000, guid: 5b5283c3ec4170a4aaeb03164ca68829, type: 3}
   - poolId: 10
     lockByDefault: 1
     requiredSolveRateToUnlockNext: 0.8
@@ -1758,7 +1809,7 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 59a44342c5fc7ca4f9e7fec8200963d1, type: 3}
     - {fileID: 4900000, guid: c6a0dc5011f472549b9d714d1d50b296, type: 3}
     - {fileID: 4900000, guid: bd2bbbdbab91ef04787ca6fe54326ba7, type: 3}
-    - {fileID: 4900000, guid: c1ba4fafc5689684fb56ad12da013133, type: 3}
+    - {fileID: 4900000, guid: 05d7105b9fd15dd45a1ba9535244e968, type: 3}
     - {fileID: 4900000, guid: 2b8151f60da921544982b7d652188fb2, type: 3}
     - {fileID: 4900000, guid: 3f7449af35f5a8a4686fd43b0bc01824, type: 3}
     - {fileID: 4900000, guid: ce9535fc1f1c6d542953aec84f3af8e1, type: 3}
@@ -1767,13 +1818,26 @@ MonoBehaviour:
     - {fileID: 4900000, guid: 457425cd40bf0ab40955adfbb44ffa5f, type: 3}
     - {fileID: 4900000, guid: 4ec8350510a84df47aa02c2e9877e9b9, type: 3}
     - {fileID: 4900000, guid: e69461117052f544cabfc2b64c80dd2c, type: 3}
-  - poolId: 7
+  - poolId: 9
     lockByDefault: 1
-    requiredSolveRateToUnlockNext: 1
-    poolName: 7k
+    requiredSolveRateToUnlockNext: 0.8
+    poolName: 9k
     puzzleDatas:
-    - {fileID: 4900000, guid: f5cb23edfaebd494ea10d89c887df3cb, type: 3}
-    - {fileID: 4900000, guid: eff7dd2c98eed3d4d8eda07834a7a4b5, type: 3}
+    - {fileID: 4900000, guid: 991db739de6289448a49ca7407b75a12, type: 3}
+    - {fileID: 4900000, guid: 4c64088a8f7192b45a2d4b58c6d1d3fc, type: 3}
+    - {fileID: 4900000, guid: b45c63764c6dd8e4fa95d1da51ca86df, type: 3}
+    - {fileID: 4900000, guid: 9ca0b4189f9179543a730e23c7964e97, type: 3}
+    - {fileID: 4900000, guid: 208f62c78db4a174a966731422610093, type: 3}
+    - {fileID: 4900000, guid: 513e446171a83744fab03ac6b8beea01, type: 3}
+    - {fileID: 4900000, guid: c3d9fc5e7a9389447b53aeb4558642ce, type: 3}
+    - {fileID: 4900000, guid: ac7cb59759baed242b47cc50c02c2c4e, type: 3}
+    - {fileID: 4900000, guid: c37e5ca35f9f22c44a89a011a9315ae8, type: 3}
+    - {fileID: 4900000, guid: 7b5e02d720671674ab44bed667a3ac0c, type: 3}
+    - {fileID: 4900000, guid: 0e580222b150eed47b668ebed35edbd4, type: 3}
+    - {fileID: 4900000, guid: c4c9d2aa05dc7c843a6bf8301e9c6bb9, type: 3}
+    - {fileID: 4900000, guid: d2d068ab2a471f1428e45ae2969761dc, type: 3}
+    - {fileID: 4900000, guid: 82f90bfb6a5137c49b854222766ea0af, type: 3}
+    - {fileID: 4900000, guid: 82bb43c0d5e2e6b4b958bdc6df3933c0, type: 3}
 --- !u!1 &1532969176
 GameObject:
   m_ObjectHideFlags: 0

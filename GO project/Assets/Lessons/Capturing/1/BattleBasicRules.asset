@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef4a382a350f98438c21cfd3c789fdf, type: 3}
+  m_Name: BattleBasicRules
+  m_EditorClassIdentifier: 
+  lessonTitle: Basic Rules
+  lessonId: battlebasicrules
+  slides:
+  - slideName: Slide 1
+    slideType: 0
+    bodyText: Welcome to your first lesson! The basic placement rules and boards
+      of Go will be explained here. Don't worry, there won't be that many.
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 2
+    slideType: 0
+    bodyText: These pieces that are shaped like circles are called "stones". You
+      and your opponent take turns placing down stones of your designated color.
+      Black always go first.
+    boardJsonFile: {fileID: 4900000, guid: cbf5d3bbfcdfe9d41bd8da8451bde56e, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 3
+    slideType: 0
+    bodyText: As you can see, stones are placed on spots where the lines intersect.
+      Therefore, the size of the boards are determined by intersections.
+    boardJsonFile: {fileID: 4900000, guid: cbf5d3bbfcdfe9d41bd8da8451bde56e, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 4
+    slideType: 0
+    bodyText: For example, this is a 9 by 9 board (or 9x9) because it is 9 intersections
+      by 9 intersections large.
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 5
+    slideType: 3
+    bodyText: 'Conprehension check! What is the size of this board?
+
+      1. 12x12
+
+      2.
+      13x13
+
+      3. 14x14'
+    boardJsonFile: {fileID: 4900000, guid: 5bcaf41b2239fbd4d928596791b1447f, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 2
+  - slideName: Slide 6
+    slideType: 3
+    bodyText: 'Correct! Now, what is the size of this board?
+
+      1. 17x17
+
+      2.
+      18x18
+
+      3. 19x19'
+    boardJsonFile: {fileID: 4900000, guid: 202b2407391bb1e40b8ccf594c3392cb, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 3
+  - slideName: Slide 7
+    slideType: 0
+    bodyText: 'Correct again! The most common board sizes are 9x9, 13x13, and 19x19,
+      but all professional matches are played on 19x19 boards. '
+    boardJsonFile: {fileID: 4900000, guid: 202b2407391bb1e40b8ccf594c3392cb, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 8
+    slideType: 3
+    bodyText: 'Quick review. What are the game pieces of Go called again?
+
+      1.
+      Stones
+
+      2. Circles
+
+      3. Pebble
+
+      4. Coins'
+    boardJsonFile: {fileID: 4900000, guid: cbf5d3bbfcdfe9d41bd8da8451bde56e, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 1
+  - slideName: Slide 9
+    slideType: 2
+    bodyText: Correct! Next, is it true that the player with white stones plays first
+      every time?
+    boardJsonFile: {fileID: 4900000, guid: cbf5d3bbfcdfe9d41bd8da8451bde56e, type: 3}
+    correctYesAnswer: 0
+    correctNumberAnswer: 0
+  - slideName: Slide 10
+    slideType: 0
+    bodyText: Correct again. Remember, opposite of chess, the player with black stones
+      always go first.
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
+  - slideName: Slide 11
+    slideType: 0
+    bodyText: That's it for the basics of basics. Remember to come back for the next
+      lesson!
+    boardJsonFile: {fileID: 4900000, guid: 3888354209bebb644919fe3bcb777b24, type: 3}
+    correctYesAnswer: 1
+    correctNumberAnswer: 0
