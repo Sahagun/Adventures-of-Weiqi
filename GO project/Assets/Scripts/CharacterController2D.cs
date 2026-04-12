@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CharacterController2D : MonoBehaviour
 {
     public float speed = 5f;  // Movement speed
-    public FixedJoystick fixedJoystick;
-    public float joystickDeadZone = 0.1f;
-    public bool forceMobileJoystickInEditor = false; // Debug toggle to test mobile controls in the editor.
+    public GameObject horizontalButtonsRoot;
+    public Button leftMoveButton;
+    public Button rightMoveButton;
+    public bool forceMobileButtonsInEditor = false; // Debug toggle to test mobile button controls in the editor.
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -19,8 +22,10 @@ public class CharacterController2D : MonoBehaviour
     private Collider2D characterCollider;      // Reference to the character's Collider2D
 
     private HashSet<UITrigger> activeTriggers = new HashSet<UITrigger>();
-    private bool useJoystickInput;
+    private bool moveLeftHeld;
+    private bool moveRightHeld;
 
+    public bool ShouldUseMobileControls => Application.isMobilePlatform || (Application.isEditor && forceMobileButtonsInEditor);
 
     void Start ()
     {
@@ -28,14 +33,8 @@ public class CharacterController2D : MonoBehaviour
         animator = GetComponent<Animator>();      // Reference to the Animator
         characterCollider = GetComponent<Collider2D>(); // Reference to the Collider2D
 
-        // Allow mobile joystick flow on real mobile, or force it while testing in the editor.
-        bool shouldUseMobileControls = Application.isMobilePlatform || (Application.isEditor && forceMobileJoystickInEditor);
-        useJoystickInput = shouldUseMobileControls && fixedJoystick != null;
-
-        if (fixedJoystick != null)
-        {
-            fixedJoystick.gameObject.SetActive(shouldUseMobileControls);
-        }
+        RegisterHoldEvents(leftMoveButton,SetMoveLeftHeld);
+        RegisterHoldEvents(rightMoveButton,SetMoveRightHeld);
 
         if (characterCollider == null)
         {
@@ -50,21 +49,8 @@ public class CharacterController2D : MonoBehaviour
 
     void Update ()
     {
-        float moveX;
-        float moveY;
-
-        if (useJoystickInput)
-        {
-            // Read joystick input on mobile and apply a small dead zone to avoid drift.
-            moveX = Mathf.Abs(fixedJoystick.Horizontal) > joystickDeadZone ? fixedJoystick.Horizontal : 0f;
-            moveY = Mathf.Abs(fixedJoystick.Vertical) > joystickDeadZone ? fixedJoystick.Vertical : 0f;
-        }
-        else
-        {
-            // Use keyboard/gamepad axis input on desktop and other non-mobile platforms.
-            moveX = Input.GetAxisRaw("Horizontal");
-            moveY = Input.GetAxisRaw("Vertical");
-        }
+        float moveX = GetHorizontalInput();
+        float moveY = Input.GetAxisRaw("Vertical");
 
         // Update movement vector
         movement = new Vector2(moveX,moveY).normalized;
@@ -79,6 +65,71 @@ public class CharacterController2D : MonoBehaviour
             characterScale.x = moveX > 0 ? 1 : -1;
             transform.localScale = characterScale;
         }
+    }
+
+    public void ShowMobileInput()
+    {
+        if (horizontalButtonsRoot != null)
+        {
+            horizontalButtonsRoot.SetActive(ShouldUseMobileControls);
+        }
+    }
+
+    private float GetHorizontalInput ()
+    {
+        if (moveLeftHeld == moveRightHeld)
+        {
+            return Input.GetAxisRaw("Horizontal");
+        }
+
+        return moveLeftHeld ? -1f : 1f;
+    }
+
+    public void SetMoveLeftHeld (bool isHeld)
+    {
+        moveLeftHeld = isHeld;
+    }
+
+    public void SetMoveRightHeld (bool isHeld)
+    {
+        moveRightHeld = isHeld;
+    }
+
+    private void RegisterHoldEvents (Button button,System.Action<bool> setHeldState)
+    {
+        if (button == null || setHeldState == null)
+        {
+            return;
+        }
+
+        EventTrigger eventTrigger = button.GetComponent<EventTrigger>();
+        if (eventTrigger == null)
+        {
+            eventTrigger = button.gameObject.AddComponent<EventTrigger>();
+        }
+
+        if (eventTrigger.triggers == null)
+        {
+            eventTrigger.triggers = new List<EventTrigger.Entry>();
+        }
+
+        AddEventTriggerEntry(eventTrigger,EventTriggerType.PointerDown,() => setHeldState(true));
+        AddEventTriggerEntry(eventTrigger,EventTriggerType.PointerUp,() => setHeldState(false));
+        AddEventTriggerEntry(eventTrigger,EventTriggerType.PointerExit,() => setHeldState(false));
+    }
+
+    private void AddEventTriggerEntry (EventTrigger eventTrigger,EventTriggerType eventType,System.Action callback)
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = eventType;
+        entry.callback.AddListener(_ => callback());
+        eventTrigger.triggers.Add(entry);
+    }
+
+    private void OnDisable ()
+    {
+        moveLeftHeld = false;
+        moveRightHeld = false;
     }
 
     void FixedUpdate ()
