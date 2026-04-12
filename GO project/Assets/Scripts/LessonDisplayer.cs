@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class LessonDisplayer : MonoBehaviour
 {
@@ -9,71 +8,82 @@ public class LessonDisplayer : MonoBehaviour
     public RawImage rawImage;
     public Sprite spriteSource;
     public GameObject textBox; // GameObject containing TextMeshProUGUI
-    public string infoText;
+    [TextArea] public string infoText;
     public Button startButton;
 
-    [Header("Scene Settings")]
-    public int sceneToLoad;
-    public string messageToSend;
+    [Header("Lesson Assignment")]
+    public LessonSceneLauncher targetLessonButton;
+    public GoLessonData lessonDataToAssign;
 
     private void Start()
     {
-        // Hide raw image and start button initially
         if (rawImage != null)
             rawImage.gameObject.SetActive(false);
+
         if (startButton != null)
             startButton.gameObject.SetActive(false);
     }
 
     public void OnButtonPressed()
     {
-        // Show RawImage and apply Sprite
         if (rawImage != null && spriteSource != null)
         {
             rawImage.gameObject.SetActive(true);
             rawImage.texture = SpriteToTexture(spriteSource);
         }
 
-        // Replace text in TextMeshPro text box
         if (textBox != null)
         {
             TextMeshProUGUI tmpText = textBox.GetComponent<TextMeshProUGUI>();
             if (tmpText != null)
-            {
                 tmpText.text = infoText;
-            }
         }
 
-        // Show and configure the start button
         if (startButton != null)
         {
             startButton.gameObject.SetActive(true);
             startButton.onClick.RemoveAllListeners();
-            startButton.onClick.AddListener(() => LoadSceneWithMessage());
+            startButton.onClick.AddListener(AssignLessonToButton);
         }
     }
 
-    private void LoadSceneWithMessage()
+    private void AssignLessonToButton()
     {
-        PlayerPrefs.SetString("SceneMessage", messageToSend);
-        SceneManager.LoadScene(sceneToLoad);
+        if (targetLessonButton == null)
+        {
+            Debug.LogWarning("LessonDisplayer is missing a targetLessonButton reference.");
+            return;
+        }
+
+        if (lessonDataToAssign == null)
+        {
+            Debug.LogWarning("LessonDisplayer is missing a lessonDataToAssign reference.");
+            return;
+        }
+
+        targetLessonButton.SetLessonData(lessonDataToAssign);
+        Debug.Log($"Assigned lesson '{lessonDataToAssign.name}' to '{targetLessonButton.name}'.");
     }
 
     private Texture2D SpriteToTexture(Sprite sprite)
     {
-        if (sprite.rect.width != sprite.texture.width)
+        if (sprite == null)
+            return null;
+
+        if (sprite.rect.width != sprite.texture.width || sprite.rect.height != sprite.texture.height)
         {
-            // Create new texture from sprite
             Texture2D newText = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
             Color[] newColors = sprite.texture.GetPixels(
                 (int)sprite.textureRect.x,
                 (int)sprite.textureRect.y,
                 (int)sprite.textureRect.width,
                 (int)sprite.textureRect.height);
+
             newText.SetPixels(newColors);
             newText.Apply();
             return newText;
         }
+
         return sprite.texture;
     }
 }

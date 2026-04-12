@@ -1,0 +1,229 @@
+{
+    "boardSize": 9,
+    "boardFlat": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        2,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0
+    ],
+    "moves": [
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(5,8)",
+                    "aiMove": "(4,8)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(5,9)",
+                    "aiMove": "(4,9)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(9,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": [
+                {
+                    "playerMove": "(9,4)",
+                    "aiMove": "(9,9)",
+                    "isKoMove": false
+                }
+            ]
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(5,8)",
+                    "aiMove": "(4,8)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(5,9)",
+                    "aiMove": "(4,9)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(7,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": [
+                {
+                    "playerMove": "(7,4)",
+                    "aiMove": "(9,9)",
+                    "isKoMove": false
+                }
+            ]
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(5,8)",
+                    "aiMove": "(4,8)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(5,9)",
+                    "aiMove": "(4,9)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(6,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": [
+                {
+                    "playerMove": "(6,4)",
+                    "aiMove": "(9,9)",
+                    "isKoMove": false
+                }
+            ]
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(5,8)",
+                    "aiMove": "(4,8)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(9,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": []
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(5,8)",
+                    "aiMove": "(4,8)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(7,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": []
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(5,8)",
+                    "aiMove": "(4,8)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(6,4)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": []
+        }
+    ]
+}
