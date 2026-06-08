@@ -1,0 +1,51 @@
+{
+    "boardSize": 5,
+    "boardFlat": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2,
+        2,
+        0,
+        0,
+        1,
+        1,
+        0
+    ],
+    "moves": [
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(2,5)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": [
+                {
+                    "playerMove": "(3,3)",
+                    "aiMove": "(2,5)",
+                    "isKoMove": false
+                }
+            ]
+        }
+    ]
+}
