@@ -3706,8 +3706,8 @@ MonoBehaviour:
   infoText: Player's stone capturing the opponent's stones but leaves player's stones
     at one liberty, allowing opponent to capture right back.
   startButton: {fileID: 892904038}
-  targetLessonButton: {fileID: 0}
-  lessonDataToAssign: {fileID: 0}
+  targetLessonButton: {fileID: 892904041}
+  lessonDataToAssign: {fileID: 11400000, guid: 31d66c81cfdd1064b9e5ae9aef2c832f, type: 2}
 --- !u!114 &642705110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7780,8 +7780,8 @@ MonoBehaviour:
   infoText: Players are not allowed to place a stone that returns the game to the
     immediately prior position.
   startButton: {fileID: 892904038}
-  targetLessonButton: {fileID: 0}
-  lessonDataToAssign: {fileID: 0}
+  targetLessonButton: {fileID: 892904041}
+  lessonDataToAssign: {fileID: 11400000, guid: 5ca9444e06ac3b142929e2c7cf12f6c7, type: 2}
 --- !u!114 &1745913412
 MonoBehaviour:
   m_ObjectHideFlags: 0
