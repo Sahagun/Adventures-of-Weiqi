@@ -124,8 +124,11 @@ public class CaptureManager : MonoBehaviour
             LastRemovedCount = allCaptured.Count;
         }
 
-        // 3) Compute ko (simple-ko): only when a single stone was captured and the capturing group’s
-        //    only liberty afterwards is exactly the captured point.
+        // 3) Compute ko (simple-ko): only when a SINGLE lone stone captured exactly one
+        //    stone and is now in self-atari at the captured point. Requiring the capturing
+        //    group to be a single stone is what separates a real ko (recapturing one stone
+        //    repeats the position) from a snapback (the capturing group is many stones, so
+        //    recapturing takes the whole group and is perfectly legal).
         if (exemptStone.HasValue && allCaptured.Count == 1)
         {
             // Re-evaluate the placed stone group AFTER removal
@@ -136,8 +139,9 @@ public class CaptureManager : MonoBehaviour
             // No exemptions here; we want actual liberties after capture
             FloodFill(exemptStone.Value.x,exemptStone.Value.y,exemptPlayer,v2,g2,null,false,libs2);
 
-            // If the only liberty is the captured point, set ko against the opponent.
-            if (libs2.Count == 1 && libs2.Contains(allCaptured[0]))
+            // Real ko: a lone stone (group size 1) whose only liberty is the captured point.
+            // A multi-stone capturing group is a snapback, NOT a ko, so it must stay legal.
+            if (g2.Count == 1 && libs2.Count == 1 && libs2.Contains(allCaptured[0]))
             {
                 SetKo(allCaptured[0],OpponentOf(exemptPlayer));
             }
