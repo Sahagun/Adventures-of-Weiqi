@@ -1,0 +1,149 @@
+{
+    "boardSize": 9,
+    "boardFlat": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "moves": [
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(6,5)",
+                    "aiMove": "(6,4)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(7,4)",
+                    "aiMove": "(6,3)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(6,2)",
+                    "aiMove": "(7,3)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(8,3)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": []
+        },
+        {
+            "playerMove": "",
+            "aiMove": "",
+            "isKoMove": false,
+            "correctMoves": [
+                {
+                    "playerMove": "(6,4)",
+                    "aiMove": "(6,5)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(7,5)",
+                    "aiMove": "(6,6)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(6,7)",
+                    "aiMove": "(7,6)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(8,6)",
+                    "aiMove": "(7,7)",
+                    "isKoMove": false
+                },
+                {
+                    "playerMove": "(7,8)",
+                    "aiMove": "(0,0)",
+                    "isKoMove": false
+                }
+            ],
+            "wrongMoves": []
+        }
+    ]
+}
