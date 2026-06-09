@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,13 @@ public class CharacterController2D : MonoBehaviour
     public Button leftMoveButton;
     public Button rightMoveButton;
     public bool forceMobileButtonsInEditor = false; // Debug toggle to test mobile button controls in the editor.
+
+    [Tooltip("Seconds the character stays frozen after the menu Start button is pressed.")]
+    public float startMovementDelay = 2f;
+
+    // Movement is locked until the player presses Start in the menu and the delay elapses.
+    private bool movementEnabled = false;
+    private Coroutine enableMovementRoutine;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -49,6 +57,15 @@ public class CharacterController2D : MonoBehaviour
 
     void Update ()
     {
+        // Stay frozen until movement is unlocked (2s after the menu Start button is pressed).
+        if (!movementEnabled)
+        {
+            movement = Vector2.zero;
+            if (animator != null)
+                animator.SetBool("isWalking",false);
+            return;
+        }
+
         float moveX = GetHorizontalInput();
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -73,6 +90,32 @@ public class CharacterController2D : MonoBehaviour
         {
             horizontalButtonsRoot.SetActive(ShouldUseMobileControls);
         }
+
+        // The menu Start button triggers this; keep the player frozen briefly afterwards.
+        BeginStartMovementDelay();
+    }
+
+    // Locks movement, then re-enables it after startMovementDelay seconds.
+    public void BeginStartMovementDelay()
+    {
+        if (enableMovementRoutine != null)
+            StopCoroutine(enableMovementRoutine);
+
+        enableMovementRoutine = StartCoroutine(EnableMovementAfterDelay());
+    }
+
+    private IEnumerator EnableMovementAfterDelay()
+    {
+        movementEnabled = false;
+        movement = Vector2.zero;
+        if (rb != null)
+            rb.velocity = Vector2.zero;
+
+        if (startMovementDelay > 0f)
+            yield return new WaitForSeconds(startMovementDelay);
+
+        movementEnabled = true;
+        enableMovementRoutine = null;
     }
 
     private float GetHorizontalInput ()
@@ -134,6 +177,14 @@ public class CharacterController2D : MonoBehaviour
 
     void FixedUpdate ()
     {
+        // While movement is locked, keep the body still.
+        if (!movementEnabled)
+        {
+            if (rb != null)
+                rb.velocity = Vector2.zero;
+            return;
+        }
+
         // Calculate movement based on input
         Vector2 movementDelta = movement * speed;
 

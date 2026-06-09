@@ -49,6 +49,8 @@ public class LessonSceneLauncher : MonoBehaviour
             return;
         }
 
+        // Remember where the lesson was launched from so quitting returns here.
+        PuzzlePersist.Instance.SetLessonReturnScene(SceneManager.GetActiveScene().buildIndex);
         PuzzlePersist.Instance.BeginLessonSession(lessonData);
         LoadLessonScene();
     }

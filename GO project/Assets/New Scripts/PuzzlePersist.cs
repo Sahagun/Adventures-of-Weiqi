@@ -20,6 +20,10 @@ public class PuzzlePersist : Singleton<PuzzlePersist>
     public int activeLessonSlideIndex;
     public int activeLessonWrongAnswerCount;
 
+    // Build index of the scene that launched the current lesson, so quitting returns there
+    // (e.g. Philosophy Academy) instead of a hardcoded destination. -1 = not set.
+    public int lessonReturnSceneIndex = -1;
+
     [SerializeField] private List<int> activePoolFirstResultStates = new();
 
     public bool HasSelectedPuzzlePool => savedPuzzlePools != null && savedPuzzlePools.Count > 0;
@@ -79,6 +83,12 @@ public class PuzzlePersist : Singleton<PuzzlePersist>
         }
 
         return result;
+    }
+
+    // Records which scene launched the lesson so QuitLesson can return to it.
+    public void SetLessonReturnScene(int sceneBuildIndex)
+    {
+        lessonReturnSceneIndex = sceneBuildIndex;
     }
 
     public void BeginLessonSession(GoLessonData lessonData)

@@ -63,6 +63,10 @@ public class LessonDisplayer : MonoBehaviour
 
         targetLessonButton.SetLessonData(lessonDataToAssign);
         Debug.Log($"Assigned lesson '{lessonDataToAssign.name}' to '{targetLessonButton.name}'.");
+
+        // Launch immediately so the Start button starts the lesson in a single click
+        // instead of only assigning it (which previously required a second click).
+        targetLessonButton.LaunchLesson();
     }
 
     private Texture2D SpriteToTexture(Sprite sprite)
