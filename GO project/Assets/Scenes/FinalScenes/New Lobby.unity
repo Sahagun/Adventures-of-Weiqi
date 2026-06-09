@@ -5135,7 +5135,7 @@ MonoBehaviour:
   horizontalButtonsRoot: {fileID: 1787925138}
   leftMoveButton: {fileID: 596140492}
   rightMoveButton: {fileID: 23180294}
-  forceMobileButtonsInEditor: 1
+  forceMobileButtonsInEditor: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64

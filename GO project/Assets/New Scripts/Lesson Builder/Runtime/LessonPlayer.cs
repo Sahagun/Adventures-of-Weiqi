@@ -113,16 +113,22 @@ public class LessonPlayer : MonoBehaviour
 
     public void QuitLesson()
     {
-        if (returnToLessonSelectionSceneIndex < 0)
+        // Prefer the scene that actually launched this lesson (set by LessonSceneLauncher),
+        // falling back to the serialized index if it was never recorded.
+        int returnSceneIndex = returnToLessonSelectionSceneIndex;
+        if (PuzzlePersist.Instance != null && PuzzlePersist.Instance.lessonReturnSceneIndex >= 0)
+            returnSceneIndex = PuzzlePersist.Instance.lessonReturnSceneIndex;
+
+        if (returnSceneIndex < 0)
         {
-            Debug.LogWarning("LessonPlayer returnToLessonSelectionSceneIndex is not configured.");
+            Debug.LogWarning("LessonPlayer has no return scene configured (lessonReturnSceneIndex and returnToLessonSelectionSceneIndex are unset).");
             return;
         }
 
         if (PuzzlePersist.Instance != null)
             PuzzlePersist.Instance.ClearLessonSession();
 
-        LoadScene(returnToLessonSelectionSceneIndex);
+        LoadScene(returnSceneIndex);
     }
 
     public void RestartLessonFromBeginning()

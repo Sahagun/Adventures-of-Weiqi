@@ -687,18 +687,35 @@ public class CubeGrid : MonoBehaviour
             return false;
         }
 
+        // Place the stone in the board model first so captures resolve opponent-first.
+        boardState[y,x] = 1;
+
+        if (captureManager != null)
+        {
+            // treatExemptGroupAsAlive = true keeps the just-placed group alive for this
+            // capture pass, so enemy groups are removed first (correct Go capture order).
+            // This prevents the player's own stone being wrongly removed when it has 0
+            // liberties on placement but gains liberties by capturing the opponent.
+            captureManager.CheckForCaptures(new Vector2Int(x,y),1,true);
+
+            bool hasLibertiesAfter = HasLiberties(x,y,1);
+            bool capturedAny = captureManager.LastRemovedCount > 0;
+
+            // Strict Go: a move with no liberties that captures nothing is suicide -> reject.
+            if (!hasLibertiesAfter && !capturedAny)
+            {
+                Debug.LogWarning($"Illegal (suicide) move at ({y + 1}, {x + 1}) for player 1. Reverting.");
+                boardState[y,x] = 0;
+                return false;
+            }
+        }
+
+        // Commit the move: spawn the visual stone and record it in the player's history.
         Vector3 tilePosition = gridTile.transform.position + Vector3.up * 0.5f;
         GameObject stone = Instantiate(playerTile,tilePosition,Quaternion.identity);
         stone.transform.parent = gridTile.transform;
 
-        boardState[y,x] = 1;
         playerMoveHistory.Add(tileName);
-
-        if (captureManager != null)
-        {
-            // Pass the ko-override flag so the just-placed group can be treated alive for this pass if needed
-            captureManager.CheckForCaptures(new Vector2Int(x,y),1,isKoThisStep);
-        }
 
         // If player 1 was the banned side from a previous ko, their move (anywhere) expires that ko.
         captureManager?.ExpireKoIfBannedPlayerMoved(1,new Vector2Int(x,y));
@@ -840,13 +857,9 @@ public class CubeGrid : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        if (gameEnded && intendedMove != "(0,0)")
-        {
-            Debug.Log("Game has ended, AI will not place a stone.");
-            aiProcessing = false;
-            yield break;
-        }
-
+        // Note: even when the player's move has already ended the game (e.g. a wrong
+        // final move), the AI still plays its scripted response so the consequence is
+        // shown on the board. Only a "(0,0)" response means "AI does not place a stone".
         if (intendedMove == "(0,0)")
         {
             Debug.Log("AI skips turn as per puzzle logic.");
