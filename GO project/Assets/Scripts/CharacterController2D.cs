@@ -49,6 +49,10 @@ public class CharacterController2D : MonoBehaviour
             Debug.LogError("No Collider2D component found on the character.");
         }
 
+        // Movement buttons are mobile-only; keep them hidden until ShowMobileInput decides.
+        if (horizontalButtonsRoot != null)
+            horizontalButtonsRoot.SetActive(false);
+
         // Ensure the enter button starts hidden until the player is inside a trigger.
         isInTriggerZone = false;
         EnterButton.Instance?.UnbindTrigger();
@@ -288,7 +292,8 @@ public class CharacterController2D : MonoBehaviour
         if (isCurrentlyInTriggerZone != isInTriggerZone)
         {
             isInTriggerZone = isCurrentlyInTriggerZone;
-            if (isInTriggerZone)
+            // The on-screen Enter button is mobile-only; desktop uses the UITrigger hotkey (F).
+            if (isInTriggerZone && ShouldUseMobileControls)
             {
                 EnterButton.Instance?.Show();
             }

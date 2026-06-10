@@ -49,6 +49,13 @@ public class LessonSceneLauncher : MonoBehaviour
             return;
         }
 
+        // Respect the Academy unlock graph (if present) so locked lessons can't be entered.
+        if (LessonUnlockManager.Instance != null && !LessonUnlockManager.Instance.IsLessonUnlocked(lessonData))
+        {
+            Debug.Log($"Lesson '{lessonData.lessonId}' is locked; complete its prerequisites first.");
+            return;
+        }
+
         // Remember where the lesson was launched from so quitting returns here.
         PuzzlePersist.Instance.SetLessonReturnScene(SceneManager.GetActiveScene().buildIndex);
         PuzzlePersist.Instance.BeginLessonSession(lessonData);

@@ -354,6 +354,10 @@ public class LessonPlayer : MonoBehaviour
             return;
         }
 
+        // Lesson finished -> persist completion so unlock gating and story triggers can react.
+        if (puzzlePersist.activeLessonData != null)
+            LessonProgressionStore.SetLessonCompleted(puzzlePersist.activeLessonData.lessonId);
+
         ShowLessonCompletionOverlay(BuildLessonCompletionMessage());
     }
 

@@ -6240,6 +6240,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257945123}
   m_CullTransparentMesh: 1
+--- !u!1 &1277947688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1277947690}
+  - component: {fileID: 1277947689}
+  m_Layer: 0
+  m_Name: Lesson Unlock Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1277947689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277947688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c71fea175cab3d49a7844c41e5a1d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rules:
+  - lesson: {fileID: 11400000, guid: f6673e74c4eb5d444af3d0af0cb77c4d, type: 2}
+    unlockedByDefault: 1
+    prerequisites: []
+  - lesson: {fileID: 11400000, guid: 5d0d8d3ec89e16848badfa2e5a60c7bc, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: f6673e74c4eb5d444af3d0af0cb77c4d, type: 2}
+  - lesson: {fileID: 11400000, guid: 331da5e27c8de09428dc386dabf47d86, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 5d0d8d3ec89e16848badfa2e5a60c7bc, type: 2}
+  - lesson: {fileID: 11400000, guid: a459ed86c1bd2954c99582ef333cb8d6, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 331da5e27c8de09428dc386dabf47d86, type: 2}
+  - lesson: {fileID: 11400000, guid: 1987c8953cad20c4c94bae8cb1573dc5, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: a459ed86c1bd2954c99582ef333cb8d6, type: 2}
+  - lesson: {fileID: 11400000, guid: 0375d9e08bb60264a8ad9fb8b0a254ce, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 1987c8953cad20c4c94bae8cb1573dc5, type: 2}
+  - lesson: {fileID: 11400000, guid: 165e7cf5b6a1fda41a47ffd06ea5ebd3, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 0375d9e08bb60264a8ad9fb8b0a254ce, type: 2}
+  - lesson: {fileID: 11400000, guid: b19217dcbfc4aaa4eb444ec5347efe01, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 165e7cf5b6a1fda41a47ffd06ea5ebd3, type: 2}
+  - lesson: {fileID: 11400000, guid: 5ed2f0f8fb64d884b8ee4c8a15e35827, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: b19217dcbfc4aaa4eb444ec5347efe01, type: 2}
+  - lesson: {fileID: 11400000, guid: 31d66c81cfdd1064b9e5ae9aef2c832f, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 5ed2f0f8fb64d884b8ee4c8a15e35827, type: 2}
+  - lesson: {fileID: 11400000, guid: 5ca9444e06ac3b142929e2c7cf12f6c7, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 31d66c81cfdd1064b9e5ae9aef2c832f, type: 2}
+  - lesson: {fileID: 11400000, guid: 086d6f8e536233549a33d94c76b1ea77, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 331da5e27c8de09428dc386dabf47d86, type: 2}
+  - lesson: {fileID: 11400000, guid: 61cf6123046e0c64ca1d56a6aa476534, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 086d6f8e536233549a33d94c76b1ea77, type: 2}
+  - lesson: {fileID: 11400000, guid: 5e1216c4023a5b44d8a17d53ba254d31, type: 2}
+    unlockedByDefault: 0
+    prerequisites:
+    - {fileID: 11400000, guid: 61cf6123046e0c64ca1d56a6aa476534, type: 2}
+    - {fileID: 11400000, guid: 5ca9444e06ac3b142929e2c7cf12f6c7, type: 2}
+  lockLessonsWithoutRule: 1
+--- !u!4 &1277947690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277947688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.228844, y: 0.35454366, z: 2.161521}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346280075
 GameObject:
   m_ObjectHideFlags: 0
@@ -10273,5 +10375,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1430498401}
   - {fileID: 689794125}
+  - {fileID: 1277947690}
   - {fileID: 275038543}
   - {fileID: 2142845998}

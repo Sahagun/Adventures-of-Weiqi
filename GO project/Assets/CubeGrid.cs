@@ -23,19 +23,43 @@ public class CubeGrid : MonoBehaviour
     
 
     [Line]
-    [SerializeField] bool useReferenceSpriteBounds = true;
-    [SerializeField] bool fitReferenceSpriteToBoard = true;
+    // --- Per-scene board placement (these reference scene objects, so they can't be global) ---
+    [Tooltip("The board image renderer the grid maps onto. Left empty, it is auto-found by name (\"Board Sprite ...\").")]
     [SerializeField] SpriteRenderer gridReferenceSprite;
+    [Tooltip("The 3D board model the sprite is resized to fit. Leave empty for flat 2D boards.")]
     [SerializeField] Transform boardModelRoot;
-    [Min(0f)] [SerializeField] Vector2 fitPadding = Vector2.zero;
-    
-    [SerializeField] List<BoardVisuals> boardVisuals = new();
+    [Tooltip("Resize the board sprite to match the board model (needed when different board sizes share one model).")]
+    [SerializeField] bool fitReferenceSpriteToBoard = true;
+    [Tooltip("Inset (world units) used by the fit-to-model resize.")]
+    [SerializeField] Vector2 fitPadding = Vector2.zero;
+    [SerializeField] bool useReferenceSpriteBounds = true;
 
-    [Line]
-    [ReadOnly] [SerializeField] private Vector2 boardProjectedSize;
-    [ReadOnly] [SerializeField] private Vector2 spriteProjectedSize;
-    [ReadOnly] [SerializeField] private Vector3 fittedBottomLeft;
-    [ReadOnly] [SerializeField] private Vector3 fittedTopRight;
+    [Tooltip("Fallback only, used when no board sprite is found. World distance between adjacent grid points.")]
+    [SerializeField] float manualCellSpacing = 1f;
+    [Tooltip("Fallback only, used when no board sprite is found. Slides the whole stone grid to line up with the board.")]
+    [SerializeField] Vector3 manualGridOffset = Vector3.zero;
+
+    // ----------------------------------------------------------------------------------
+    // Board art (size->sprite) and stone sizing come from the project-wide GoBoardLibrary
+    // (Resources/GoBoardLibrary.asset). These are internal and refreshed from it each
+    // rebuild - there are intentionally NO per-scene copies of these settings.
+    // ----------------------------------------------------------------------------------
+    private List<BoardVisuals> boardVisuals = new();
+    private bool scaleStonesWithBoardSize = true;
+    private float stoneCellFillFraction = 0.9f;
+    private float stoneScaleMultiplier = 1f;
+    private Vector2 stoneScaleClamp = new Vector2(0.1f, 6f);
+    private float cellWorldSpacing = 1f;
+
+    // Set each rebuild from the global GoBoardLibrary.
+    private bool libraryBoardActive = false;
+    private Vector2 activeGridOffset = Vector2.zero;
+    private Vector2 activeGridInset = Vector2.zero;
+
+    private Vector2 boardProjectedSize;
+    private Vector2 spriteProjectedSize;
+    private Vector3 fittedBottomLeft;
+    private Vector3 fittedTopRight;
 
     private List<GameObject> cubeObjects = new List<GameObject>();
     private List<string> allowedCubes = new List<string>();
@@ -151,17 +175,20 @@ public class CubeGrid : MonoBehaviour
 
     public void InitializeGrid ()
     {
-        ApplyBoardVisualForCurrentGridSize();
+        ResolveGlobalBoardConfig();
 
         foreach (Transform child in transform)
             Destroy(child.gameObject);
         cubeObjects.Clear();
         Array.Clear(boardState,0,boardState.Length);
 
+        // Resize the (library-selected) board sprite to the board model when one is set,
+        // so different board sizes sharing one model all render at the same physical size.
         FitReferenceSpriteToBoardIfEnabled();
 
         Vector3 gridOrigin = transform.position;
         bool useSpriteBounds = TryGetGridCorners(out Vector3 bottomLeft,out Vector3 topRight);
+        cellWorldSpacing = CalculateCellWorldSpacing(useSpriteBounds,bottomLeft,topRight);
 
         for (int i = 1; i <= gridSize; i++)
         {
@@ -186,9 +213,12 @@ public class CubeGrid : MonoBehaviour
                 }
                 else
                 {
-                    Vector3 localOffset = new Vector3(j - 1,0,i - 1);
-                    position = gridOrigin + localOffset;
+                    Vector3 localOffset = new Vector3((j - 1) * manualCellSpacing,0,(i - 1) * manualCellSpacing);
+                    position = gridOrigin + manualGridOffset + localOffset;
                 }
+
+                // Global per-board-size nudge from the library - moves the whole grid on X/Z.
+                position += new Vector3(activeGridOffset.x,0f,activeGridOffset.y);
 
                 GameObject gridTile = Instantiate(gridTilePrefab,position,Quaternion.identity);
                 gridTile.name = $"({i},{j})";  // 1-based naming: (row,column)
@@ -234,6 +264,113 @@ public class CubeGrid : MonoBehaviour
     {
         if (boardAnnotationController == null)
             boardAnnotationController = FindObjectOfType<GoBoardAnnotationController>();
+    }
+
+    // Resizes a freshly-instantiated stone to a fraction of the board's actual cell spacing,
+    // so stones look correctly proportioned regardless of board size or the prefab's authored scale.
+    private void ApplyStoneScale (GameObject stone)
+    {
+        if (stone == null || !scaleStonesWithBoardSize)
+            return;
+
+        float currentDiameter = MeasureWorldDiameter(stone);
+        if (currentDiameter <= Mathf.Epsilon || cellWorldSpacing <= Mathf.Epsilon)
+            return;
+
+        float targetDiameter = cellWorldSpacing * stoneCellFillFraction;
+        float factor = stoneScaleMultiplier * (targetDiameter / currentDiameter);
+        factor = Mathf.Clamp(factor,stoneScaleClamp.x,stoneScaleClamp.y);
+
+        stone.transform.localScale *= factor;
+    }
+
+    // Largest horizontal extent (X/Z) of the stone's combined renderer bounds, in world units.
+    private float MeasureWorldDiameter (GameObject stone)
+    {
+        Renderer[] renderers = stone.GetComponentsInChildren<Renderer>();
+        if (renderers == null || renderers.Length == 0)
+            return 0f;
+
+        Bounds bounds = renderers[0].bounds;
+        for (int i = 1; i < renderers.Length; i++)
+            bounds.Encapsulate(renderers[i].bounds);
+
+        return Mathf.Max(bounds.size.x,bounds.size.z);
+    }
+
+    // World distance between two adjacent grid points, used to size stones to the board.
+    private float CalculateCellWorldSpacing (bool useSpriteBounds,Vector3 bottomLeft,Vector3 topRight)
+    {
+        if (useSpriteBounds && gridSize > 1)
+        {
+            float spanX = Mathf.Abs(topRight.x - bottomLeft.x);
+            float spanZ = Mathf.Abs(topRight.z - bottomLeft.z);
+            return Mathf.Min(spanX,spanZ) / (gridSize - 1);
+        }
+
+        // Fallback matches the manual spacing used when sprite bounds aren't available.
+        return Mathf.Max(0.01f,manualCellSpacing);
+    }
+
+    // Pulls board sprite, padding, stone sizing, and shared prefabs from the project-wide
+    // GoBoardLibrary (Resources/GoBoardLibrary.asset). Falls back to this component's own
+    // serialized fields when no library or no matching board size is found.
+    private void ResolveGlobalBoardConfig ()
+    {
+        libraryBoardActive = false;
+        activeGridOffset = Vector2.zero;
+        activeGridInset = Vector2.zero;
+
+        GoBoardLibrary library = GoBoardLibrary.Instance;
+        if (library != null)
+        {
+            // Only fill empty prefab slots - never overwrite a scene's explicit choice.
+            if (playerTile == null && library.playerStonePrefab != null)
+                playerTile = library.playerStonePrefab;
+            if (computerTile == null && library.computerStonePrefab != null)
+                computerTile = library.computerStonePrefab;
+            if (gridTilePrefab == null && library.gridTilePrefab != null)
+                gridTilePrefab = library.gridTilePrefab;
+
+            if (library.overrideStoneSettings)
+            {
+                scaleStonesWithBoardSize = library.scaleStonesWithBoardSize;
+                stoneCellFillFraction = library.stoneCellFillFraction;
+                stoneScaleMultiplier = library.stoneScaleMultiplier;
+                stoneScaleClamp = library.stoneScaleClamp;
+            }
+
+            if (library.TryGetBoard(gridSize,out GoBoardLibrary.BoardEntry entry) && entry.boardSprite != null)
+            {
+                if (gridReferenceSprite == null)
+                    gridReferenceSprite = FindBoardSpriteRenderer();
+
+                if (gridReferenceSprite != null)
+                {
+                    gridReferenceSprite.sprite = entry.boardSprite;
+                    useReferenceSpriteBounds = true;
+                    libraryBoardActive = true;
+                    activeGridOffset = entry.gridOffset;
+                    activeGridInset = entry.gridInset;
+                }
+            }
+        }
+
+        // No library board for this size -> keep the legacy per-scene visuals behavior.
+        if (!libraryBoardActive)
+            ApplyBoardVisualForCurrentGridSize();
+    }
+
+    // Best-effort lookup of the visible board SpriteRenderer when a scene didn't assign one.
+    private SpriteRenderer FindBoardSpriteRenderer ()
+    {
+        foreach (SpriteRenderer renderer in FindObjectsOfType<SpriteRenderer>(true))
+        {
+            if (renderer != null &&
+                renderer.gameObject.name.StartsWith("Board Sprite",System.StringComparison.OrdinalIgnoreCase))
+                return renderer;
+        }
+        return null;
     }
 
     private void ApplySerializedAnnotationsToBoard ()
@@ -309,6 +446,13 @@ public class CubeGrid : MonoBehaviour
         FitReferenceSpriteToBoard(force: true);
     }
 
+    // Rebuilds the board in-place so manual spacing/offset tweaks can be previewed live in Play mode.
+    [ContextMenu("Rebuild Grid (alignment test)")]
+    private void RebuildGridContext ()
+    {
+        InitializeGrid();
+    }
+
     private void FitReferenceSpriteToBoardIfEnabled ()
     {
         FitReferenceSpriteToBoard(force: false);
@@ -374,8 +518,11 @@ public class CubeGrid : MonoBehaviour
         }
 
         float y = transform.position.y;
-        bottomLeft = new Vector3(bounds.min.x,y,bounds.min.z);
-        topRight = new Vector3(bounds.max.x,y,bounds.max.z);
+        // Pull the outer grid lines inward by the per-board inset (world units) so edge
+        // stones land on the painted lines instead of the image border.
+        Vector2 inset = libraryBoardActive ? activeGridInset : Vector2.zero;
+        bottomLeft = new Vector3(bounds.min.x + inset.x,y,bounds.min.z + inset.y);
+        topRight = new Vector3(bounds.max.x - inset.x,y,bounds.max.z - inset.y);
         fittedBottomLeft = bottomLeft;
         fittedTopRight = topRight;
         return true;
@@ -714,6 +861,7 @@ public class CubeGrid : MonoBehaviour
         Vector3 tilePosition = gridTile.transform.position + Vector3.up * 0.5f;
         GameObject stone = Instantiate(playerTile,tilePosition,Quaternion.identity);
         stone.transform.parent = gridTile.transform;
+        ApplyStoneScale(stone);
 
         playerMoveHistory.Add(tileName);
 
@@ -841,7 +989,8 @@ public class CubeGrid : MonoBehaviour
             {
                 GameObject stoneToPlace = (player == 1) ? playerTile : computerTile;
                 Vector3 tilePosition = gridTile.transform.position + Vector3.up * 0.5f;
-                Instantiate(stoneToPlace,tilePosition,Quaternion.identity,gridTile.transform);
+                GameObject placedStone = Instantiate(stoneToPlace,tilePosition,Quaternion.identity,gridTile.transform);
+                ApplyStoneScale(placedStone);
             }
 
             boardState[y,x] = player;
@@ -924,7 +1073,8 @@ public class CubeGrid : MonoBehaviour
         if (aiTile != null)
         {
             Vector3 tilePosition = aiTile.transform.position + Vector3.up * 0.5f;
-            Instantiate(computerTile,tilePosition,Quaternion.identity,aiTile.transform);
+            GameObject aiStone = Instantiate(computerTile,tilePosition,Quaternion.identity,aiTile.transform);
+            ApplyStoneScale(aiStone);
             Debug.Log($"AI placed a stone at ({x + 1}, {y + 1}).");
 
             // Expire ko if AI was the banned side
