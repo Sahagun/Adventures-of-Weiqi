@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: DialogueConfig
   m_EditorClassIdentifier: 
   characters:
-  - icon: {fileID: 21300000, guid: 608c550cd9fae3643bc35d0bab2b8cbe, type: 3}
-    title: Char1
-  - icon: {fileID: 21300000, guid: d9fd4bbdc9effc44b96d7bb1b1ea159f, type: 3}
-    title: Char2
+  - icon: {fileID: 21300000, guid: 428e56bd959bbe74e90cf23b8bb14202, type: 3}
+    title: Heiqi
+  - icon: {fileID: 21300000, guid: e135653acadc8c7439dbb3f357d835c4, type: 3}
+    title: Goggle
   entries:
-  - character: Char1
+  - character: Heiqi
     dialogue: Hello this is the first dialogue
-  - character: Char2
+  - character: Heiqi
     dialogue: Bye for now!

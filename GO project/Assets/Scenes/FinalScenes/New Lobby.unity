@@ -2938,6 +2938,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 7700300003}
+        m_TargetAssemblyTypeName: LobbyStoryDirector, Assembly-CSharp
+        m_MethodName: BeginStory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1231966646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5193,6 +5205,58 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7700300001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7700300002}
+  - component: {fileID: 7700300003}
+  m_Layer: 0
+  m_Name: LobbyStoryDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7700300002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700300001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7700300003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700300001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4d4cd570db2894cac0ebe958ae5bd4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  runner: {fileID: 0}
+  arrowToAcademy: {fileID: 0}
+  arrowToTrainingHub: {fileID: 0}
+  requiredFirstLessons:
+  - {fileID: 11400000, guid: f6673e74c4eb5d444af3d0af0cb77c4d, type: 2}
+  - {fileID: 11400000, guid: 5d0d8d3ec89e16848badfa2e5a60c7bc, type: 2}
+  - {fileID: 11400000, guid: 331da5e27c8de09428dc386dabf47d86, type: 2}
+  startDelay: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5205,3 +5269,4 @@ SceneRoots:
   - {fileID: 240770301}
   - {fileID: 1997214667}
   - {fileID: 800249226}
+  - {fileID: 7700300002}

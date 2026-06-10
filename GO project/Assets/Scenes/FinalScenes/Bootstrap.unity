@@ -929,7 +929,7 @@ RectTransform:
   m_GameObject: {fileID: 748003783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 129671673}
@@ -1629,6 +1629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1062076057}
   - component: {fileID: 1062076058}
+  - component: {fileID: 1062076059}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -1747,6 +1748,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1062076059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062076056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c208d04ca83a64f8f770bf767c569f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyMusic: {fileID: 8300000, guid: bf460a69d8df5b943ab7535d851bbf7d, type: 3}
+  mainMusic: {fileID: 8300000, guid: 4726c76a1e841424a8c3334b3701e0ef, type: 3}
+  lobbySceneName: New Lobby
+  ignoredSceneNames:
+  - Bootstrap
+  volume: 0.6
+  musicSource: {fileID: 1062076058}
 --- !u!1 &1085899390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,6 +3125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1766077274}
   - component: {fileID: 1766077275}
+  - component: {fileID: 7700300001}
   m_Layer: 0
   m_Name: Dialogue Manager
   m_TagString: Untagged
@@ -3135,11 +3156,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766077273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f84998cadc9771640b7583ccf2a0d762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   config: {fileID: 11400000, guid: 9370f79f47f12d54cb4d220856c0566f, type: 2}
   dialogueRoot: {fileID: 748003783}
   characterImage: {fileID: 65703732}
@@ -3154,6 +3175,31 @@ MonoBehaviour:
   isDialogueActive: 0
   isTyping: 0
   hasInvokedFinishEvent: 0
+--- !u!114 &7700300001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766077273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae34650fc9bea148862641f4ff78d0d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  characterConfig: {fileID: 11400000, guid: 9370f79f47f12d54cb4d220856c0566f, type: 2}
+  dialogueRoot: {fileID: 748003783}
+  characterImage: {fileID: 65703732}
+  speakerNameText: {fileID: 669232461}
+  bodyText: {fileID: 138518073}
+  advanceButton: {fileID: 129671676}
+  characterRevealDelay: 0.03
+  floatTarget: {fileID: 129671673}
+  floatOffsetY: 700
+  floatDuration: 0.4
+  onConversationFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &1969920325 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1947107709795954679, guid: 6a68849668c282e4686b75f1c9c87b33, type: 3}
@@ -3455,8 +3501,15 @@ MonoBehaviour:
   activePoolLabel: 
   requiredSolveRateToUnlockNext: 1
   nextPoolIdToUnlock: 
+  activePoolOrderInitialized: 0
+  activePoolCurrentPuzzleIndex: 0
   activePoolSolvedCount: 0
   activePoolFailedCount: 0
+  activeLessonData: {fileID: 0}
+  activeLessonSlideIndex: 0
+  activeLessonWrongAnswerCount: 0
+  lessonReturnSceneIndex: -1
+  activePoolFirstResultStates: 
 --- !u!4 &2046473136
 Transform:
   m_ObjectHideFlags: 0
