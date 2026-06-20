@@ -376,6 +376,9 @@ public class LessonPlayer : MonoBehaviour
     {
         hasShownPuzzleFailureState = true;
 
+        // A failed puzzle attempt counts as a mistake, same as a wrong yes/no/number answer.
+        PuzzlePersist.Instance?.RecordLessonWrongAnswer();
+
         if (gameUiManager != null)
             gameUiManager.SetGameplayMainStatusText(BuildMainStatusText(puzzleFailedStatusText));
     }

@@ -115,6 +115,14 @@ public class LobbyStoryDirector : MonoBehaviour
         return true;
     }
 
+    // Right-click the component header in the Inspector to replay the story from scratch while testing.
+    [ContextMenu("Reset Story Flags (debug)")]
+    private void ResetStoryFlagsDebug()
+    {
+        StoryFlags.ResetAll();
+        Debug.Log("Story flags reset - all lobby conversations (intro, after-lessons, after-hub) will play again.");
+    }
+
     private void ShowArrow(GameObject arrow)
     {
         if (arrow != null)

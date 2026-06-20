@@ -51,12 +51,16 @@ public class StoryDialogueRunner : MonoBehaviour
 
     public bool IsActive => isActive;
 
+    /// <summary>True while ANY story conversation is on screen. Used to block building entry, etc.</summary>
+    public static bool IsAnyDialogueActive { get; private set; }
+
     private void Awake()
     {
         CaptureFloatRest();
         if (dialogueRoot != null)
             dialogueRoot.SetActive(false);
         isActive = false;
+        IsAnyDialogueActive = false;
     }
 
     private void OnEnable()
@@ -87,6 +91,7 @@ public class StoryDialogueRunner : MonoBehaviour
         lineIndex = 0;
         onComplete = onCompleteCallback;
         isActive = true;
+        IsAnyDialogueActive = true;
 
         if (dialogueRoot != null)
             dialogueRoot.SetActive(true);
@@ -186,6 +191,7 @@ public class StoryDialogueRunner : MonoBehaviour
     private void Finish()
     {
         isActive = false;
+        IsAnyDialogueActive = false;
         StopTyping();
 
         Action callback = onComplete;
