@@ -46,7 +46,8 @@ public class CubeGrid : MonoBehaviour
     // ----------------------------------------------------------------------------------
     private List<BoardVisuals> boardVisuals = new();
     private bool scaleStonesWithBoardSize = true;
-    private float stoneCellFillFraction = 0.9f;
+    // Manually authored in GoBoardLibrary (global, or per-board override). Not player-facing.
+    private float stoneCellFillFraction = 0.6f;
     private float stoneScaleMultiplier = 1f;
     private Vector2 stoneScaleClamp = new Vector2(0.1f, 6f);
     private float cellWorldSpacing = 1f;
@@ -277,6 +278,7 @@ public class CubeGrid : MonoBehaviour
         if (currentDiameter <= Mathf.Epsilon || cellWorldSpacing <= Mathf.Epsilon)
             return;
 
+        // Stone diameter = manually authored fraction of the cell spacing (GoBoardLibrary, default 60%).
         float targetDiameter = cellWorldSpacing * stoneCellFillFraction;
         float factor = stoneScaleMultiplier * (targetDiameter / currentDiameter);
         factor = Mathf.Clamp(factor,stoneScaleClamp.x,stoneScaleClamp.y);
@@ -352,6 +354,10 @@ public class CubeGrid : MonoBehaviour
                     libraryBoardActive = true;
                     activeGridOffset = entry.gridOffset;
                     activeGridInset = entry.gridInset;
+
+                    // Per-board stone size overrides the global value when set (> 0).
+                    if (entry.stoneFillFraction > 0f)
+                        stoneCellFillFraction = entry.stoneFillFraction;
                 }
             }
         }

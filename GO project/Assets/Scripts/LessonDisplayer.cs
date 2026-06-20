@@ -15,6 +15,12 @@ public class LessonDisplayer : MonoBehaviour
     public LessonSceneLauncher targetLessonButton;
     public GoLessonData lessonDataToAssign;
 
+    [Header("Lock (like Puzzle Leveling)")]
+    [Tooltip("Lock icon shown when this lesson's prerequisites aren't met. Hidden when unlocked.")]
+    public GameObject lockOverlay;
+    [Tooltip("This lesson row's button. Auto-found on this object if left empty; made non-interactable while locked.")]
+    public Button lessonButton;
+
     private void Start()
     {
         if (rawImage != null)
@@ -22,6 +28,54 @@ public class LessonDisplayer : MonoBehaviour
 
         if (startButton != null)
             startButton.gameObject.SetActive(false);
+
+        RefreshLockState();
+    }
+
+    private void OnEnable()
+    {
+        RefreshLockState();
+    }
+
+    // Auto-fills the button + lock references in the editor so they show in the Inspector.
+    private void OnValidate()
+    {
+        if (lessonButton == null)
+            lessonButton = GetComponent<Button>();
+
+        if (lockOverlay == null)
+            lockOverlay = FindFirstChildImage();
+    }
+
+    // Shows the lock icon and blocks the row when the lesson's prerequisites aren't met.
+    public void RefreshLockState()
+    {
+        if (lessonButton == null)
+            lessonButton = GetComponent<Button>();
+
+        if (lockOverlay == null)
+            lockOverlay = FindFirstChildImage();
+
+        bool unlocked = true;
+        if (LessonUnlockManager.Instance != null && lessonDataToAssign != null)
+            unlocked = LessonUnlockManager.Instance.IsLessonUnlocked(lessonDataToAssign);
+
+        if (lockOverlay != null)
+            lockOverlay.SetActive(!unlocked);
+
+        if (lessonButton != null)
+            lessonButton.interactable = unlocked;
+    }
+
+    // Grabs the first Image among children (excluding this object's own button image) to use as the lock icon.
+    private GameObject FindFirstChildImage()
+    {
+        foreach (Image image in GetComponentsInChildren<Image>(true))
+        {
+            if (image != null && image.gameObject != gameObject)
+                return image.gameObject;
+        }
+        return null;
     }
 
     public void OnButtonPressed()

@@ -39,7 +39,7 @@ MonoBehaviour:
     gridInset: {x: 0, y: 0}
   overrideStoneSettings: 1
   scaleStonesWithBoardSize: 1
-  stoneCellFillFraction: 0.9
+  stoneCellFillFraction: 0.6
   stoneScaleMultiplier: 1
   stoneScaleClamp: {x: 0.1, y: 6}
   playerStonePrefab: {fileID: 0}

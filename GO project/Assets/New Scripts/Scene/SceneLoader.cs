@@ -10,6 +10,8 @@ namespace Moddwyn
     {
         public LoadingScreen loadingScreen;
         public int initialSceneIndex = 1;
+        [Tooltip("Turn OFF when an IntroStartupScreen handles the very first load instead of this loader.")]
+        public bool loadInitialSceneOnStart = true;
         public float delayBeforeLoading = 1f;
         public float delayBeforeActivation = 0.25f;
         public float delayBeforeDeactivation = 1.5f;
@@ -31,7 +33,8 @@ namespace Moddwyn
 
         void Start()
         {
-            LoadScene(initialSceneIndex);
+            if (loadInitialSceneOnStart)
+                LoadScene(initialSceneIndex);
         }
 
         public void LoadScene(string sceneName)

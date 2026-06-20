@@ -8,6 +8,10 @@ public class UITrigger : MonoBehaviour
     public KeyCode interactionKey = KeyCode.F; // Configurable hotkey in the Inspector
     public string sceneIdentifier = "0"; // Single variable for scene loading (index or name)
 
+    [Tooltip("Tick for buildings with a real door (e.g. Archive Center) so the door enter/leave SFX play. " +
+             "Leave unticked for open buildings (Training Hub, Philosophy Academy).")]
+    public bool buildingHasDoor = false;
+
     private bool isUIVisible = false; // Tracks if the UI is currently visible
 
     public UnityEvent OnTrigger;
@@ -37,7 +41,15 @@ public class UITrigger : MonoBehaviour
 
     void Enter()
     {
+        // Don't let the player walk into a building while a story conversation is playing.
+        if (StoryDialogueRunner.IsAnyDialogueActive)
+        {
+            Debug.Log("Building entry blocked: a dialogue is currently active.");
+            return;
+        }
+
         OnTrigger?.Invoke();
+        BuildingDoorAudio.Instance?.PlayEnter(buildingHasDoor);
         LoadScene();
     }
 

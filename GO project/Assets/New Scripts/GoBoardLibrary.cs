@@ -31,6 +31,10 @@ public class GoBoardLibrary : ScriptableObject
         [Tooltip("Pulls the OUTER stones inward by this many world units on each side. " +
                  "Use it when the edge stones sit just outside the painted lines. 0 = stones span the full image.")]
         public Vector2 gridInset = Vector2.zero;
+
+        [Tooltip("Stone size for THIS board: fraction of a cell a stone fills (0.6 = 60%). " +
+                 "Leave at 0 to use the global Stone Cell Fill Fraction below.")]
+        [Range(0f, 1f)] public float stoneFillFraction = 0f;
     }
 
     [Header("Per-board-size art + alignment")]
@@ -40,7 +44,9 @@ public class GoBoardLibrary : ScriptableObject
     [Tooltip("When on, these stone-sizing values override whatever each scene's CubeGrid has.")]
     public bool overrideStoneSettings = true;
     public bool scaleStonesWithBoardSize = true;
-    [Range(0.1f, 1.5f)] public float stoneCellFillFraction = 0.9f;
+    [Tooltip("Global stone size: fraction of a cell a stone fills (0.6 = 60%, 1.0 = touching). " +
+             "Per-board entries can override this with their own Stone Fill Fraction.")]
+    [Range(0.1f, 1f)] public float stoneCellFillFraction = 0.6f;
     public float stoneScaleMultiplier = 1f;
     public Vector2 stoneScaleClamp = new Vector2(0.1f, 6f);
 
