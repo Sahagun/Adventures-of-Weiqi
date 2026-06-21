@@ -228,8 +228,8 @@ MonoBehaviour:
     correctNumberAnswer: 0
   - slideName: Slide 18
     slideType: 0
-    bodyText: Very well done! You are now a master at spotting Aratis. Come back
-      next time to learn about how to use Aratis with strategy!
+    bodyText: Very well done! You are now a master at spotting Ataris. Come back
+      next time to learn about how to use Ataris with strategy!
     boardSource: 1
     boardJsonFile: {fileID: 0}
     inlineBoardSize: 9

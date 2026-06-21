@@ -14,33 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boards:
   - gridSize: 5
-    boardSprite: {fileID: 21300000, guid: c0ef19263e31fd545b5de607c15d266b, type: 3}
+    boardSprite: {fileID: 21300000, guid: 626f163b756dbf54fab78c55629953b3, type: 3}
     gridOffset: {x: 0, y: 0}
-    gridInset: {x: 0.03, y: 0.03}
+    gridInset: {x: 1.4, y: 1.4}
+    stoneFillFraction: 0
   - gridSize: 7
     boardSprite: {fileID: 21300000, guid: e5a24d287e95a804db6f3378458d09dc, type: 3}
     gridOffset: {x: 0, y: 0}
     gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
   - gridSize: 9
     boardSprite: {fileID: 21300000, guid: f57485e906e38564bb29f9d9e5677f12, type: 3}
     gridOffset: {x: 0, y: 0}
     gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
   - gridSize: 11
     boardSprite: {fileID: 21300000, guid: 5f5e052faf4c80c4983175be810aa2a5, type: 3}
     gridOffset: {x: 0, y: 0}
     gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
   - gridSize: 13
     boardSprite: {fileID: 21300000, guid: 3e250a267862f39459c6a9474f17587d, type: 3}
     gridOffset: {x: 0, y: 0}
     gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
   - gridSize: 19
     boardSprite: {fileID: 21300000, guid: 7a6d9689435905b478b15d184d1a1a0e, type: 3}
     gridOffset: {x: 0, y: 0}
     gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
   overrideStoneSettings: 1
   scaleStonesWithBoardSize: 1
-  stoneCellFillFraction: 0.6
-  stoneScaleMultiplier: 1
+  stoneCellFillFraction: 0.5
+  stoneScaleMultiplier: 4.5
   stoneScaleClamp: {x: 0.1, y: 6}
   playerStonePrefab: {fileID: 0}
   computerStonePrefab: {fileID: 0}

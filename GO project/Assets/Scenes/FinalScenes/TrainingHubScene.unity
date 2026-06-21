@@ -1037,7 +1037,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument:
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &851211013
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Test Lesson
+  m_text: Daily Puzzles
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6dd8c3ad21a54f4b8f93fc4494ea31d, type: 2}
   m_sharedMaterial: {fileID: -8156249846680821115, guid: f6dd8c3ad21a54f4b8f93fc4494ea31d, type: 2}
@@ -2208,8 +2208,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5020fc5da07604d4c8b050d7301c090c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7700400001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,8 +2252,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5012a8c188939cf48b04e32c2a41b216, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   pools: []
   poolSource: {fileID: 1159158676}
   dailyPuzzleCount: 10

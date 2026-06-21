@@ -122,7 +122,7 @@ MonoBehaviour:
     correctNumberAnswer: 0
   - slideName: Slide 9
     slideType: 0
-    bodyText: What to make a group of stones immortal? Well, you can now with eyes!
+    bodyText: Want to make a group of stones immortal? Well, you can now with eyes!
       Notice how this group of black stones has two eyes?
     boardSource: 1
     boardJsonFile: {fileID: 0}
