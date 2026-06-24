@@ -57,7 +57,10 @@ public class ClickManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray,out RaycastHit hit))
+            // Ignore trigger colliders so the stones' capture-detection triggers (and their child
+            // direction colliders) never intercept a click - only the non-trigger grid tiles are hit.
+            // This keeps placement working no matter how large the stones are scaled.
+            if (Physics.Raycast(ray,out RaycastHit hit,Mathf.Infinity,Physics.DefaultRaycastLayers,QueryTriggerInteraction.Ignore))
             {
                 if (!cubeGrid.TryResolveGridTile(hit.collider.gameObject,out GameObject clickedCube))
                     return;
