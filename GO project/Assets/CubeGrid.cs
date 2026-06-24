@@ -286,17 +286,18 @@ public class CubeGrid : MonoBehaviour
         stone.transform.localScale *= factor;
     }
 
-    // Largest horizontal extent (X/Z) of the stone's combined renderer bounds, in world units.
+    // Largest horizontal extent (X/Z) of the stone's OWN renderer, in world units.
+    // Only the stone body is measured - the child direction/collision helpers are scaled
+    // differently on the black vs white prefabs and would otherwise skew the size.
     private float MeasureWorldDiameter (GameObject stone)
     {
-        Renderer[] renderers = stone.GetComponentsInChildren<Renderer>();
-        if (renderers == null || renderers.Length == 0)
+        Renderer renderer = stone.GetComponent<Renderer>();
+        if (renderer == null)
+            renderer = stone.GetComponentInChildren<Renderer>();
+        if (renderer == null)
             return 0f;
 
-        Bounds bounds = renderers[0].bounds;
-        for (int i = 1; i < renderers.Length; i++)
-            bounds.Encapsulate(renderers[i].bounds);
-
+        Bounds bounds = renderer.bounds;
         return Mathf.Max(bounds.size.x,bounds.size.z);
     }
 
