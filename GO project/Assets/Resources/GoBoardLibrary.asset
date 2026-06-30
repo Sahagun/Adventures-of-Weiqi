@@ -45,8 +45,8 @@ MonoBehaviour:
     stoneFillFraction: 0
   overrideStoneSettings: 1
   scaleStonesWithBoardSize: 1
-  stoneCellFillFraction: 0.5
-  stoneScaleMultiplier: 4.5
+  stoneCellFillFraction: 0.9
+  stoneScaleMultiplier: 1
   stoneScaleClamp: {x: 0.1, y: 6}
   playerStonePrefab: {fileID: 0}
   computerStonePrefab: {fileID: 0}

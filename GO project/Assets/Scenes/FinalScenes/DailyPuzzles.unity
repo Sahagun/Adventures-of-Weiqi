@@ -1690,7 +1690,7 @@ Transform:
   m_GameObject: {fileID: 1169587457}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.64, y: 1.074, z: 2.55}
+  m_LocalPosition: {x: 1.64, y: 2.17, z: 2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2484,32 +2484,18 @@ MonoBehaviour:
   computerTile: {fileID: 891994820548498069, guid: e084f0f5e0ee71548846b832597127ce, type: 3}
   gridTilePrefab: {fileID: 8582640854257805855, guid: c1070f979d4f92c4fb9b011c517e3f9f, type: 3}
   gridSize: 8
-  useReferenceSpriteBounds: 1
-  fitReferenceSpriteToBoard: 1
   gridReferenceSprite: {fileID: 1886740295}
   boardModelRoot: {fileID: 543450651754524105}
+  fitReferenceSpriteToBoard: 1
   fitPadding: {x: 1, y: 1}
-  boardVisuals:
-  - gridSize: 5
-    gridSprite: {fileID: 21300000, guid: c0ef19263e31fd545b5de607c15d266b, type: 3}
-  - gridSize: 7
-    gridSprite: {fileID: 21300000, guid: e5a24d287e95a804db6f3378458d09dc, type: 3}
-  - gridSize: 9
-    gridSprite: {fileID: 21300000, guid: f57485e906e38564bb29f9d9e5677f12, type: 3}
-  - gridSize: 11
-    gridSprite: {fileID: 21300000, guid: 5f5e052faf4c80c4983175be810aa2a5, type: 3}
-  - gridSize: 13
-    gridSprite: {fileID: 21300000, guid: 3e250a267862f39459c6a9474f17587d, type: 3}
-  - gridSize: 19
-    gridSprite: {fileID: 21300000, guid: 7a6d9689435905b478b15d184d1a1a0e, type: 3}
-  boardProjectedSize: {x: 0, y: 0}
-  spriteProjectedSize: {x: 0, y: 0}
-  fittedBottomLeft: {x: 0, y: 0, z: 0}
-  fittedTopRight: {x: 0, y: 0, z: 0}
+  useReferenceSpriteBounds: 1
+  manualCellSpacing: 1
+  manualGridOffset: {x: 0, y: 0, z: 0}
   puzzleJsonFile: {fileID: 0}
   captureManager: {fileID: 1520261334}
   gameManager: {fileID: 225348955}
   conditionManager: {fileID: 1520261335}
+  boardAnnotationController: {fileID: 0}
   illegalMoves: []
 --- !u!114 &1520261334
 MonoBehaviour:
