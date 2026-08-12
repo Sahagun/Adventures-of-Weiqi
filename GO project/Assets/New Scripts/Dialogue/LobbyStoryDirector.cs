@@ -66,13 +66,25 @@ public class LobbyStoryDirector : MonoBehaviour
             yield break;
         }
 
-        if (!StoryFlags.AfterLessonsPlayed && AreFirstLessonsComplete())
+        // The beats are strictly ordered. Visiting the Training Hub before the first
+        // three lessons must not skip past the after-lessons conversation, so nothing
+        // below this block can run until that beat has played.
+        if (!StoryFlags.AfterLessonsPlayed)
         {
-            PlayBeat(StoryScript.AfterFirstLessons(), () =>
+            if (AreFirstLessonsComplete())
             {
-                StoryFlags.AfterLessonsPlayed = true;
-                ShowArrow(arrowToTrainingHub);
-            });
+                PlayBeat(StoryScript.AfterFirstLessons(), () =>
+                {
+                    StoryFlags.AfterLessonsPlayed = true;
+                    ShowArrow(arrowToTrainingHub);
+                });
+            }
+            else
+            {
+                // Lessons still owed - keep pointing back at the Academy.
+                ShowArrow(arrowToAcademy);
+            }
+
             yield break;
         }
 
@@ -84,6 +96,9 @@ public class LobbyStoryDirector : MonoBehaviour
             });
             yield break;
         }
+
+        if (!StoryFlags.TrainingHubVisited)
+            ShowArrow(arrowToTrainingHub);
     }
 
     private void PlayBeat(StoryConversation conversation, System.Action onFinished)

@@ -16,10 +16,20 @@ MonoBehaviour:
   - gridSize: 5
     boardSprite: {fileID: 21300000, guid: 626f163b756dbf54fab78c55629953b3, type: 3}
     gridOffset: {x: 0, y: 0}
-    gridInset: {x: 1.4, y: 1.4}
+    gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
+  - gridSize: 6
+    boardSprite: {fileID: 21300000, guid: b6a1c40d2f7e4a1b9c3d5e8f70a12b34, type: 3}
+    gridOffset: {x: 0, y: 0}
+    gridInset: {x: 0, y: 0}
     stoneFillFraction: 0
   - gridSize: 7
     boardSprite: {fileID: 21300000, guid: e5a24d287e95a804db6f3378458d09dc, type: 3}
+    gridOffset: {x: 0, y: 0}
+    gridInset: {x: 0, y: 0}
+    stoneFillFraction: 0
+  - gridSize: 8
+    boardSprite: {fileID: 21300000, guid: c8d2e51f3a8b4c2d0e4f6a9b81b23c45, type: 3}
     gridOffset: {x: 0, y: 0}
     gridInset: {x: 0, y: 0}
     stoneFillFraction: 0
